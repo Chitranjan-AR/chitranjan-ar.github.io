@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitranjan - Frontend Developer Portfolio</title>
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="chitranjan.jpg" as="image">
+</head>
+
+<body>
+    <div class="floating-boxes">
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+        <div class="floating-box"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="skills-ticker">
+        <div class="ticker-content">
+            <span>Java</span><span>Python</span><span>JavaScript</span><span>React</span><span>IT
+                Support</span><span>System Admin</span><span>Network Troubleshooting</span><span>UI/UX
+                Design</span><span>Problem Solving</span><span>Technical Writing</span>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">CHITRANJAN</div>
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="closeMenu()">HOME</a></li>
+                <li><a href="#about" onclick="closeMenu()">ABOUT</a></li>
+                <li><a href="#services" onclick="closeMenu()">SERVICES</a></li>
+                <li><a href="#projects" onclick="closeMenu()">PROJECTS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello, I'm <span class="highlight">Chitranjan</span> And I Am a</h1>
+                <h2 id="dynamic-title"></h2>
+                <p>I'm a dedicated IT professional with expertise in technical support, troubleshooting, and software development. I specialize in resolving complex technical issues, providing exceptional user support, and developing efficient solutions to enhance system performance and user experience.</p>
+                <div class="social-links">
+                    <a href="https://github.com/chitranjan140" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/chitranjan-kumar140" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com/chitranjan.kr_s" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="200">0</span>
+                        <span class="stat-label">Support Tickets</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="15">0</span>
+                        <span class="stat-label">Projects Built</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="98">0</span>
+                        <span class="stat-label">% Satisfaction</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn primary">Hire Me</a>
+                    <a href="#about" class="btn secondary">Let's Talk</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="chitranjan.jpg" alt="Chitranjan" class="profile-photo" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated IT professional with expertise in technical support and software development. My
+                        experience spans troubleshooting complex technical issues, providing user support, and
+                        developing applications using Java and Python.</p>
+                    <p>I enjoy solving problems, learning new technologies, and helping others overcome technical
+                        challenges.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming</h3>
+                        <p>Java & Python</p>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-tools"></i>
+                        <h3>IT Support</h3>
+                        <p>Technical Solutions</p>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-users"></i>
+                        <h3>Problem Solving</h3>
+                        <p>User-Focused</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>My <span class="gradient-text">Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Creating modern, responsive websites and web applications using latest technologies and best practices for optimal performance.</p>
+                    <ul class="service-features">
+                        <li>Frontend Development</li>
+                        <li>Backend Development</li>
+                        <li>Database Integration</li>
+                        <li>API Development</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Building cross-platform mobile applications with native performance and intuitive user interfaces for iOS and Android.</p>
+                    <ul class="service-features">
+                        <li>React Native Apps</li>
+                        <li>Cross-platform Solutions</li>
+                        <li>App Store Deployment</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Comprehensive digital marketing strategies including SEO, social media marketing, and online brand development for businesses.</p>
+                    <ul class="service-features">
+                        <li>SEO Optimization</li>
+                        <li>Social Media Marketing</li>
+                        <li>Content Strategy</li>
+                        <li>Brand Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Work <span class="gradient-text">Experience</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Full Stack Developer</h3>
+                        <h4>Tech Solutions Inc.</h4>
+                        <ul>
+                            <li>Developed 15+ responsive web applications using React and Node.js</li>
+                            <li>Built restaurant landing pages and e-commerce platforms</li>
+                            <li>Implemented weather forecast applications with real-time data</li>
+                            <li>Created AI-powered resume analyzer using Python and machine learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>IT Support Specialist</h3>
+                        <h4>Digital Solutions Pro</h4>
+                        <ul>
+                            <li>Managed 200+ user support tickets with 98% satisfaction rate</li>
+                            <li>Provided technical support for hardware and software issues</li>
+                            <li>Implemented system automation scripts reducing resolution time by 40%</li>
+                            <li>Trained junior technicians in troubleshooting best practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical <span class="gradient-text">Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend Technologies</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend & Database</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">API Development</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> IT Support & Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Windows/Linux</span>
+                        <span class="skill-tag">Network Administration</span>
+                        <span class="skill-tag">System Troubleshooting</span>
+                        <span class="skill-tag">Technical Support</span>
+                        <span class="skill-tag">Hardware Diagnostics</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> Development Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Latest <span class="gradient-text">Project</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&h=200&fit=crop" alt="Restaurant Landing Page">
+                    </div>
+                    <div class="project-content">
+                        <h3>Restaurant Landing Page</h3>
+                        <p>Modern restaurant website with menu and reservations</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=300&h=200&fit=crop" alt="Weather Forecast">
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather Forecast</h3>
+                        <p>Real-time weather app with 7-day forecast</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>API</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop" alt="E-Commerce">
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Website</h3>
+                        <p>Full-featured online shopping platform</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=300&h=200&fit=crop" alt="AI Resume Analyzer">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Resume Analyzer</h3>
+                        <p>ML-powered resume analysis and optimization</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>ML</span>
+                            <span>Flask</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=300&h=200&fit=crop" alt="Portfolio">
+                    </div>
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Personal portfolio with modern design</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Dashboard">
+                    </div>
+                    <div class="project-content">
+                        <h3>Admin Dashboard</h3>
+                        <p>Responsive admin panel with analytics</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Charts</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2>Certifications & <span class="gradient-text">Achievements</span></h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React Developer</h3>
+                    <p>Meta Professional Certificate</p>
+                    <span class="cert-date">2023</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js Developer</h3>
+                    <p>MongoDB University</p>
+                    <span class="cert-date">2023</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>CompTIA A+</h3>
+                    <p>IT Support Certification</p>
+                    <span class="cert-date">2022</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python Developer</h3>
+                    <p>Python Institute</p>
+                    <span class="cert-date">2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="floating-elements">
+                    <div class="float-element"></div>
+                    <div class="float-element"></div>
+                    <div class="float-element"></div>
+                </div>
+                <h2><span class="modern-text">Contact</span></h2>
+                <div class="header-line"></div>
+                <div class="text-particles"></div>
+            </div>
+            <p class="contact-subtitle">Let's collaborate and bring your ideas to life</p>
+            <div class="contact-grid">
+                <div class="contact-card" data-tilt>
+                    <div class="card-background"></div>
+                    <div class="card-border"></div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                            <div class="icon-ripple"></div>
+                        </div>
+                        <h3>Email</h3>
+                    </div>
+                    <p>kumarchitranjan5737@gmail.com</p>
+                    <div class="card-shine"></div>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="contact-card" data-tilt>
+                    <div class="card-background"></div>
+                    <div class="card-border"></div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-phone"></i>
+                            <div class="icon-ripple"></div>
+                        </div>
+                        <h3>Phone</h3>
+                    </div>
+                    <p>+91 8757673815</p>
+                    <div class="card-shine"></div>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="contact-card" data-tilt>
+                    <div class="card-background"></div>
+                    <div class="card-border"></div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fab fa-linkedin"></i>
+                            <div class="icon-ripple"></div>
+                        </div>
+                        <h3>LinkedIn</h3>
+                    </div>
+                    <p>chitranjan-kumar140</p>
+                    <div class="card-shine"></div>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="contact-card" data-tilt>
+                    <div class="card-background"></div>
+                    <div class="card-border"></div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fab fa-github"></i>
+                            <div class="icon-ripple"></div>
+                        </div>
+                        <h3>GitHub</h3>
+                    </div>
+                    <p>chitranjan140</p>
+                    <div class="card-shine"></div>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Client <span class="gradient-text">Testimonials</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Chitranjan delivered exceptional IT support and web development services. His technical expertise and problem-solving skills are outstanding.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Client">
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <span>CEO, Tech Solutions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Professional, reliable, and skilled. Chitranjan helped us modernize our entire IT infrastructure with minimal downtime.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Client">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <span>CTO, Digital Corp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Excellent communication and technical skills. The web application he developed exceeded our expectations in every way.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="Client">
+                        <div class="author-info">
+                            <h4>Mike Davis</h4>
+                            <span>Founder, StartupXYZ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-wave"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <div class="logo-icon">CK</div>
+                    </div>
+                    <h3>Chitranjan Kumar</h3>
+                    <p>IT Support Specialist & Full Stack Developer</p>
+                    <div class="social-links">
+                        <a href="https://github.com/chitranjan140" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span class="social-tooltip">GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/chitranjan-kumar140" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="social-tooltip">LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com/chitranjan140" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                            <span class="social-tooltip">Twitter</span>
+                        </a>
+                        <a href="https://instagram.com/chitranjan140" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                            <span class="social-tooltip">Instagram</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">IT Support</a></li>
+                            <li><a href="#">System Administration</a></li>
+                            <li><a href="#">Technical Consulting</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>kumarchitranjan5737@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+91 8757673815</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Chitranjan Kumar. All rights reserved.</p>
+                    <div class="footer-badges">
+                        <span class="badge">Made with <span class="heart">❤️</span></span>
+                        <span class="badge">Powered by Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="scrollTopBtn" class="scroll-top-btn">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="neon-interactions.js"></script>
+    <script src="3d-interactions.js"></script>
+</body>
+
+</html>
