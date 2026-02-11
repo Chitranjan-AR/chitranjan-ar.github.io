@@ -142,71 +142,49 @@ function initMobileMenu() {
 
 // Ultra Modern Dynamic Title with Multiple Effects
 function initDynamicTitle() {
+    // Simplified non-shifting typewriter that relies on CSS .revealing
     const titles = [
-        { text: 'IT Support Specialist', color: '#3b82f6' },
-        { text: 'Software Developer', color: '#10b981' }, 
-        { text: 'Frontend Developer', color: '#f59e0b' },
-        { text: 'Problem Solver', color: '#8b5cf6' },
-        { text: 'Tech Innovator', color: '#ef4444' }
+        'Frontend Developer',
+        'IT Support Specialist',
+        'Software Developer',
+        'Problem Solver'
     ];
-    
+
     const titleElement = document.getElementById('dynamic-title');
     if (!titleElement) return;
-    
-    let currentIndex = 0;
-    
-    function modernTypeTitle() {
-        const current = titles[currentIndex];
-        let charIndex = 0;
-        
-        titleElement.innerHTML = '<span class="highlight typing-text"></span>';
-        const spanElement = titleElement.querySelector('.highlight');
-        spanElement.style.color = current.color;
-        spanElement.style.textShadow = `0 0 10px ${current.color}40`;
-        
-        function typeWithEffect() {
-            if (charIndex < current.text.length) {
-                if (Math.random() < 0.1) {
-                    spanElement.style.transform = `translateX(${Math.random() * 2 - 1}px)`;
-                    setTimeout(() => spanElement.style.transform = 'translateX(0)', 50);
-                }
-                
-                spanElement.textContent += current.text.charAt(charIndex);
-                charIndex++;
-                
-                const speed = Math.random() * 100 + 50;
-                setTimeout(typeWithEffect, speed);
-            } else {
-                spanElement.style.animation = 'pulse 0.5s ease-in-out';
-                setTimeout(() => {
-                    spanElement.style.animation = '';
-                    setTimeout(modernEraseTitle, 2500);
-                }, 500);
-            }
-        }
-        
-        function modernEraseTitle() {
-            if (spanElement.textContent.length > 0) {
-                if (Math.random() < 0.3) {
-                    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-                    const randomChar = chars[Math.floor(Math.random() * chars.length)];
-                    spanElement.textContent = spanElement.textContent.slice(0, -1) + randomChar;
-                    setTimeout(() => {
-                        spanElement.textContent = spanElement.textContent.slice(0, -1);
-                    }, 30);
-                }
-                spanElement.textContent = spanElement.textContent.slice(0, -1);
-                setTimeout(modernEraseTitle, 30);
-            } else {
-                currentIndex = (currentIndex + 1) % titles.length;
-                setTimeout(modernTypeTitle, 800);
-            }
-        }
-        
-        typeWithEffect();
+
+    // Compute longest length once and reserve width
+    const longest = titles.reduce((m, t) => Math.max(m, t.length), 0);
+    titleElement.style.setProperty('--type-chars', `${longest}ch`);
+
+    let i = 0;
+    const revealDuration = 900; // matches CSS transition
+    const holdAfterReveal = 1400; // how long the full text remains visible
+
+    function showNext() {
+        const text = titles[i];
+        // Set text content immediately (no per-character JS) — CSS will reveal smoothly
+        titleElement.textContent = text;
+
+        // trigger transition: remove then re-add class to restart width transition
+        titleElement.classList.remove('revealing');
+        // small defer to ensure removal is processed; rely on rAF for smoother timing
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                titleElement.classList.add('revealing');
+            });
+        });
+
+        // wait revealDuration + hold, then hide and show next
+        setTimeout(() => {
+            titleElement.classList.remove('revealing');
+            i = (i + 1) % titles.length;
+            // brief gap before next reveal so transition resets cleanly
+            setTimeout(showNext, 260);
+        }, revealDuration + holdAfterReveal);
     }
-    
-    modernTypeTitle();
+
+    showNext();
 }
 
 // Counter Animation
