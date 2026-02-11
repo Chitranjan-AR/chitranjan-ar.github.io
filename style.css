@@ -7,6 +7,8 @@
 
 html {
     scroll-behavior: auto;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -77,13 +79,29 @@ body {
 
 .hero-content {
     display: grid;
-    /* left column flexible, right column reserved for portrait ring */
     grid-template-columns: 1fr 480px;
     align-items: center;
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    overflow: visible;
+}
+
+@media (max-width: 1200px) {
+    .hero-content {
+        grid-template-columns: 1fr 420px;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
 }
 
 .hero-content h1 {
@@ -94,6 +112,34 @@ body {
     letter-spacing: -1px;
 }
 
+@media (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .intro-text {
     color: rgba(255,255,255,0.9);
     font-size: 1.18rem;
@@ -102,14 +148,62 @@ body {
 }
 
 .role-text {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 0.5rem;
-    white-space: nowrap;
     margin: 0.12rem 0 0.5rem 0;
     font-size: 1.35rem;
     color: rgba(255,255,255,0.92);
     font-weight: 600;
+    min-height: 2.5rem;
+    overflow: visible;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+    .role-text {
+        justify-content: center;
+        text-align: center;
+        flex-wrap: nowrap;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .role-text {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    #dynamic-title {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-text {
+        font-size: 0.75rem;
+        gap: 0.2rem;
+        padding: 0 0.25rem;
+    }
+    
+    #dynamic-title {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 360px) {
+    .role-text {
+        font-size: 0.7rem;
+    }
+    
+    #dynamic-title {
+        font-size: 0.95em;
+    }
 }
 
 .role-text .role-highlight {
@@ -148,6 +242,18 @@ body {
 /* Force left alignment for left column content to match professional layout */
 .hero-text, .hero-text h1, .hero-lead, .intro-text, .role-text {
     text-align: left;
+}
+
+@media (max-width: 900px) {
+    .hero-text, .hero-text h1, .hero-lead, .intro-text, .role-text {
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .hero-text { align-self: start; }
@@ -251,55 +357,51 @@ body {
 
 /* ensure responsive adjustments for hero ring */
 @media (max-width: 1100px) {
-    .hero-content { grid-template-columns: 1fr 420px; gap:2.5rem; }
-    .photo-ring { width:360px; height:360px; }
+    .hero-content { grid-template-columns: 1fr 380px; gap:2.5rem; }
+    .photo-ring { width:340px; height:340px; }
+    .profile-photo { max-width: 300px; max-height: 300px; }
 }
 
 @media (max-width: 900px) {
     /* remove upward shift on smaller screens to avoid overlap */
-    .photo-ring { transform: translateY(0); }
+    .photo-ring { transform: translateY(0); width: 300px; height: 300px; }
+    .profile-photo { max-width: 260px; max-height: 260px; }
+    .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-text, .intro-text, .role-text { text-align: center; }
+    .social-links { justify-content: center; }
 }
 
 @media (max-width: 768px) {
     .hero-content { grid-template-columns: 1fr; text-align:center; }
-    .photo-ring { margin: 0 auto; width:260px; height:260px; }
-    .hero-content h1 { font-size:2.6rem; }
+    .photo-ring { margin: 0 auto; width:280px; height:280px; }
+    .profile-photo { max-width: 240px; max-height: 240px; }
+    .hero-content h1 { font-size:2.8rem; display: flex; justify-content: center; }
     .intro-text, .role-text { text-align:center; }
     .social-links { justify-content:center; }
 }
 
+@media (max-width: 480px) {
+    .photo-ring { width: 240px; height: 240px; }
+    .profile-photo { max-width: 200px; max-height: 200px; }
+    .hero-content h1 { font-size: 2.2rem; }
+}
+
 /* Typewriter / animated span for role without layout shift */
 .typewriter {
-    display: inline-block;
-    vertical-align: middle;
+     display: inline;
     color: #00f0d6;
     text-shadow: 0 6px 26px rgba(0,240,214,0.12);
     font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     font-weight: 800;
     letter-spacing: 0.4px;
-    overflow: hidden; /* hide the overflowing characters during typing */
-    white-space: nowrap;
-    box-sizing: border-box;
-    /* reserve width to avoid layout shift: adjust --type-chars to longest expected */
-    --type-chars: 16ch;
-    min-width: 4ch; /* small reserve so the label doesn't force a break */
-    width: 0ch; /* start collapsed, reveal via transition */
-    max-width: var(--type-chars);
-    transition: width 0.72s cubic-bezier(.22,.9,.31,1);
-    will-change: width;
 }
 
 .typewriter::after {
-    content: '';
-    display: inline-block;
-    width: 0.12em;
-    height: 1.05em;
-    margin-left: 6px;
-    background: linear-gradient(180deg, #00f0d6, rgba(0,240,214,0.6));
-    vertical-align: middle;
+    content: '|';
+    display: inline;
+    margin-left: 4px;
+    color: #00f0d6;
     animation: blink-caret 0.8s steps(1) infinite;
-    border-radius: 1px;
-    box-shadow: 0 6px 18px rgba(0,240,214,0.12);
 }
 
 /* Ensure the role line stays inline and well spaced */
@@ -307,16 +409,34 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    white-space: nowrap; /* keep the 'And I'm a' with the role */
     margin: 0.35rem 0 0.9rem 0;
     font-size: 1.45rem;
     color: rgba(255,255,255,0.92);
     font-weight: 600;
 }
 
+@media (max-width: 900px) {
+    .role-text {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .role-text {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-text {
+        font-size: 0.95rem;
+        gap: 0.4rem;
+    }
+}
+
 /* When JS injects text, animate reveal using steps so it appears typed */
 .typewriter.revealing {
-    width: var(--type-chars);
+    opacity: 1;
 }
 
 /* removed keyframes typing in favor of CSS transition for smoother reveal */
@@ -328,8 +448,8 @@ body {
 }
 
 /* Ensure the role text layout doesn't reflow when typewriter animates */
-.role-text { display: flex; align-items: center; gap: 0.6rem; }
-.role-text .typewriter { min-width: 8ch; }
+.role-text { display: flex; align-items: center; gap: 0.6rem; min-height: 2.5rem; }
+.role-text .typewriter { min-width: auto; }
 
 section {
     padding: 80px 0;
@@ -349,6 +469,20 @@ h2 {
     gap: 2.5rem;
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .service-card {
@@ -912,6 +1046,8 @@ body {
     -webkit-overflow-scrolling: touch;
     transform: translateZ(0);
     position: relative;
+    width: 100%;
+    max-width: 100vw;
 }
 
 body::before {
@@ -1421,6 +1557,24 @@ body::before {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@media (max-width: 768px) {
+    .social-link {
+        width: 48px;
+        height: 48px;
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-link {
+        width: 44px;
+        height: 44px;
+        font-size: 1.05rem;
+    }
 }
 
 .social-link::before {
@@ -1641,10 +1795,31 @@ body::before {
 }
 
 #dynamic-title {
-    position: relative;
-    overflow: hidden;
-    min-height: 2rem;
-    transition: all 0.5s ease;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    color: #00f0d6;
+    text-shadow: 0 6px 26px rgba(0,240,214,0.12);
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+@media (max-width: 768px) {
+    #dynamic-title {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    #dynamic-title {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 360px) {
+    #dynamic-title {
+        font-size: 0.65em;
+    }
 }
 
 #dynamic-title::after {
@@ -1756,6 +1931,27 @@ body::before {
     animation: btnFloat 3s ease-in-out infinite;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 11px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @keyframes btnFloat {
@@ -2283,6 +2479,19 @@ h2 {
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-card {
@@ -4022,6 +4231,13 @@ h2 {
     display: block;
 }
 
+@media (max-width: 480px) {
+    .nav-toggle span {
+        width: 22px;
+        height: 2.5px;
+    }
+}
+
 .nav-toggle.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -4032,6 +4248,33 @@ h2 {
 
 .nav-toggle.active span:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Tablet Responsive - 1024px */
+@media (max-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1fr 350px;
+        gap: 3rem;
+    }
+    
+    .photo-ring {
+        width: 350px;
+        height: 350px;
+        transform: translateY(-40px);
+    }
+    
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Enhanced Mobile Optimization with Preserved Animations */
@@ -4045,6 +4288,14 @@ h2 {
         padding: 0 15px;
     }
     
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-logo {
+        font-size: 1.4rem;
+    }
+    
     .hero {
         padding: 100px 0 50px;
         min-height: 100vh;
@@ -4055,11 +4306,41 @@ h2 {
         text-align: center;
         gap: 2rem;
         padding: 0 1rem;
+        min-height: auto;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+        text-align: center;
     }
     
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         line-height: 1.2;
+        margin-bottom: 0.5rem;
+    }
+    
+    .role-text {
+        font-size: 1.1rem;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .typewriter {
+        font-size: 1.1rem;
+        min-width: auto;
+    }
+    
+    .hero-lead {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 1rem auto;
+        text-align: center;
     }
     
     .hero-content h2 {
@@ -4071,9 +4352,37 @@ h2 {
         margin-bottom: 2rem;
     }
     
+    .photo-ring {
+        width: 240px;
+        height: 240px;
+        transform: translateY(0);
+        margin: 0 auto;
+    }
+    
     .profile-photo {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+        min-width: auto;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .services-grid {
@@ -4100,11 +4409,17 @@ h2 {
     }
     
     .service-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .service-card p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .service-features li {
+        font-size: 0.8rem;
+        padding: 0.4rem 0;
     }
     
     .skills-grid {
@@ -4117,6 +4432,15 @@ h2 {
         padding: 1.5rem;
     }
     
+    .skill-category h3 {
+        font-size: 1.1rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -4125,6 +4449,14 @@ h2 {
     
     .project-card {
         padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .project-content p {
+        font-size: 0.85rem;
     }
     
     .cert-grid {
@@ -4137,6 +4469,10 @@ h2 {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
+    }
+    
+    .testimonial-content p {
+        font-size: 0.95rem;
     }
     
     .hero-buttons {
@@ -4157,29 +4493,47 @@ h2 {
     }
     
     .social-links {
-        gap: 1rem;
+        gap: 0.8rem;
         justify-content: center;
     }
     
     .social-link {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 2rem;
     }
     
     section {
-        padding: 60px 0;
+        padding: 50px 0;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .contact-card {
+        padding: 2rem;
+    }
+    
+    .footer-content {
+        padding: 50px 1rem 30px;
     }
 }
 
 @media (max-width: 768px) {
     .nav-toggle {
         display: flex;
+    }
+    
+    .nav-container {
+        padding: 0 1.5rem;
     }
     
     .nav-menu {
@@ -4194,7 +4548,7 @@ h2 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
         transition: right 0.3s ease;
         z-index: 10000;
         list-style: none;
@@ -4207,21 +4561,24 @@ h2 {
     }
     
     .nav-menu a {
-        font-size: 1.2rem;
-        padding: 15px 25px;
+        font-size: 1.1rem;
+        padding: 12px 30px;
         display: block;
         text-align: center;
         border-radius: 12px;
-        margin: 0.8rem 2rem;
+        margin: 0.5rem 2rem;
         background: rgba(255, 0, 128, 0.15);
         border: 1px solid rgba(255, 0, 128, 0.4);
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
+        border-bottom: none;
     }
     
-    .nav-menu a:hover {
+    .nav-menu a:hover,
+    .nav-menu a.active {
         background: rgba(255, 0, 128, 0.25);
         transform: translateX(5px);
+        border-bottom: none;
     }
     
     .hero {
@@ -4232,18 +4589,53 @@ h2 {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
-        padding: 0 1rem;
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+        min-height: auto;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .intro-text {
+        font-size: 1.05rem;
+        text-align: center;
+    }
+    
+    .photo-ring {
+        width: 280px;
+        height: 280px;
+        transform: translateY(0);
+        margin: 0 auto;
     }
     
     .profile-photo {
-        width: 220px;
-        height: 220px;
+        width: 240px;
+        height: 240px;
+        max-width: 240px;
+        max-height: 240px;
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         line-height: 1.2;
+    }
+    
+    .role-text {
+        font-size: 1.2rem;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .typewriter {
+        font-size: 1.2rem;
+    }
+    
+    .hero-lead {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: center;
     }
     
     .hero-content h2 {
@@ -4251,56 +4643,58 @@ h2 {
     }
     
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         line-height: 1.6;
         margin-bottom: 2rem;
     }
     
     .hero-stats {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        gap: 0.8rem;
         margin: 2rem 0;
     }
     
     .stat-item {
-        padding: 1rem;
+        padding: 0.8rem;
         min-width: auto;
     }
     
     .stat-number {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     .stat-label {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        line-height: 1.2;
     }
     
     .hero-buttons {
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
     }
     
     .btn {
         width: 100%;
-        max-width: 300px;
-        padding: 14px 24px;
+        max-width: 280px;
+        padding: 13px 24px;
     }
     
     .social-links {
-        gap: 1.2rem;
+        gap: 1rem;
         justify-content: center;
     }
     
     .social-link {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 46px;
+        height: 46px;
+        font-size: 1.1rem;
     }
     
     .services-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
     
     .service-card {
@@ -4313,50 +4707,63 @@ h2 {
     }
     
     .service-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.6rem;
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
     }
     
     .service-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
+    }
+    
+    .service-card p {
+        font-size: 0.95rem;
     }
     
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
     
     .skill-category {
         padding: 2rem 1.5rem;
     }
     
+    .skill-category h3 {
+        font-size: 1.2rem;
+    }
+    
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
     
     .project-card {
-        padding: 2rem;
+        padding: 1.8rem;
+    }
+    
+    .project-image {
+        height: 180px;
     }
     
     .cert-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
     
     .testimonials-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
     
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1.5rem;
     }
     
     .about-stats {
@@ -4386,10 +4793,21 @@ h2 {
         left: 21px;
     }
     
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    
     .footer-content {
         grid-template-columns: 1fr;
         gap: 3rem;
-        padding: 60px 0 30px;
+        padding: 60px 1.5rem 30px;
     }
     
     .footer-links {

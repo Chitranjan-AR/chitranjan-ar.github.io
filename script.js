@@ -142,9 +142,8 @@ function initMobileMenu() {
 
 // Ultra Modern Dynamic Title with Multiple Effects
 function initDynamicTitle() {
-    // Simplified non-shifting typewriter that relies on CSS .revealing
     const titles = [
-        'Frontend Developer',
+        'Full Stack Developer',
         'IT Support Specialist',
         'Software Developer',
         'Problem Solver'
@@ -153,35 +152,18 @@ function initDynamicTitle() {
     const titleElement = document.getElementById('dynamic-title');
     if (!titleElement) return;
 
-    // Compute longest length once and reserve width
-    const longest = titles.reduce((m, t) => Math.max(m, t.length), 0);
-    titleElement.style.setProperty('--type-chars', `${longest}ch`);
-
     let i = 0;
-    const revealDuration = 900; // matches CSS transition
-    const holdAfterReveal = 1400; // how long the full text remains visible
 
     function showNext() {
-        const text = titles[i];
-        // Set text content immediately (no per-character JS) — CSS will reveal smoothly
-        titleElement.textContent = text;
-
-        // trigger transition: remove then re-add class to restart width transition
-        titleElement.classList.remove('revealing');
-        // small defer to ensure removal is processed; rely on rAF for smoother timing
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                titleElement.classList.add('revealing');
-            });
-        });
-
-        // wait revealDuration + hold, then hide and show next
+        titleElement.style.opacity = '0';
+        
         setTimeout(() => {
-            titleElement.classList.remove('revealing');
+            titleElement.textContent = titles[i];
+            titleElement.style.opacity = '1';
             i = (i + 1) % titles.length;
-            // brief gap before next reveal so transition resets cleanly
-            setTimeout(showNext, 260);
-        }, revealDuration + holdAfterReveal);
+        }, 300);
+
+        setTimeout(showNext, 3000);
     }
 
     showNext();
